@@ -1,0 +1,4 @@
+grafana:
+  adminPassword: "supersecretproduction"
+alertmanager:
+  enabled: true

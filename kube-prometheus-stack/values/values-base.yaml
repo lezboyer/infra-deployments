@@ -1,0 +1,9 @@
+grafana:
+  enabled: true
+  adminUser: "lamine"
+  defaultDashboardsEnabled: true
+
+prometheus:
+  prometheusSpec:
+    retention: 7d
+    replicas: 1
