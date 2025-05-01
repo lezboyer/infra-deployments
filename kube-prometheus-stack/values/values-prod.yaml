@@ -1,7 +1,7 @@
-admin:
-  existingSecret: grafana-admin-secret
 alertmanager:
   enabled: true
+grafana:
+  adminPassword: "devpassword"
 prometheus:
   prometheusSpec:
     readinessProbe:
@@ -12,6 +12,3 @@ prometheus:
       initialDelaySeconds: 30
       timeoutSeconds: 10
       periodSeconds: 10
-syncPolicy:
-  syncOptions:
-    - Replace=true
