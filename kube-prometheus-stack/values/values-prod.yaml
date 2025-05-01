@@ -2,3 +2,13 @@ grafana:
   adminPassword: "supersecretproduction"
 alertmanager:
   enabled: true
+prometheus:
+  prometheusSpec:
+    readinessProbe:
+      initialDelaySeconds: 30
+      timeoutSeconds: 10
+      periodSeconds: 10
+    livenessProbe:
+      initialDelaySeconds: 30
+      timeoutSeconds: 10
+      periodSeconds: 10
