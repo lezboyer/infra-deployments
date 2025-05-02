@@ -1,24 +1,21 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: kube-prometheus-stack-prod
+  name: nginx-ingress
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: 'https://github.com/lezboyer/infra-deployments.git'
     targetRevision: main
-    path: kube-prometheus-stack
+    path: nginx-ingress
     helm:
-      releaseName: kube-monitor
+      releaseName: nginx-ingress
       valueFiles:
-        - promotheus/values/values-base.yaml
-        - promotheus/values/values-prod.yaml
-        - alertmanager/values/values-base.yaml
-        - grafana/values/values-base.yaml
+        - values/values-base.yaml
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: monitoring
+    namespace: ingress-nginx
   syncPolicy:
     automated:
       prune: true
