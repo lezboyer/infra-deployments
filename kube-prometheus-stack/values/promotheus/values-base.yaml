@@ -1,7 +1,3 @@
-grafana:
-  enabled: true
-  adminUser: "lamine"
-  defaultDashboardsEnabled: true
 
 prometheus:
   prometheusSpec:
