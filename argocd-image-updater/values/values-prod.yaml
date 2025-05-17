@@ -7,14 +7,14 @@ config:
     grpcWeb: false                            # use true if ArgoCD server is behind ingress with grpc-web
     authToken: ""                             # optional: you can mount it from a secret (preferred)
 
-  registries:
+  registryList:
     - name: Docker Hub
       prefix: docker.io
       api_url: https://registry.hub.docker.com
       credentials:
         secretRef:
           name: regcred-dockerhub
-          key: username
+          usernameKey: username
           passwordKey: password
       default: true
 
