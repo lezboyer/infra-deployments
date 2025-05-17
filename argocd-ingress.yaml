@@ -1,20 +1,21 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: grafana
-  namespace: monitoring
+  name: argocd-ingress
+  namespace: argocd
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: nginx
   rules:
-    - host: grafana.local
+    - host: argocd.local
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: kube-monitor-grafana
+                name: argocd-server
                 port:
                   number: 80
+

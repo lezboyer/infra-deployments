@@ -1,0 +1,43 @@
+config:
+  logLevel: "info"
+
+  argocd:
+    serverAddress: "argocd-server"  # adjust based on your cluster setup
+    insecure: true                            # set false if TLS is configured
+    grpcWeb: false                            # use true if ArgoCD server is behind ingress with grpc-web
+    authToken: ""                             # optional: you can mount it from a secret (preferred)
+
+  registries:
+    - name: Docker Hub
+      prefix: docker.io
+      api_url: https://registry.hub.docker.com
+      credentials:
+        secretRef:
+          name: regcred-dockerhub
+          key: username
+          passwordKey: password
+      default: true
+
+  git:
+    commitUser: "ArgoCD Image Updater"
+    commitEmail: "m.lamineboye@gmail.com"
+
+  resources:
+    limits:
+      cpu: 100m
+      memory: 128Mi
+    requests:
+      cpu: 50m
+      memory: 64Mi
+
+extraEnv:
+  - name: GIT_WRITE_ENABLED
+    value: "true"
+  - name: ARGOCD_IMAGE_UPDATER_LOGLEVEL
+    value: "info"
+
+rbac:
+  create: true
+
+serviceAccount:
+  create: true
