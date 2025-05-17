@@ -2,3 +2,4 @@ grafana-secret.yaml
 app*
 regcred-dockerhub.yaml
 dockerhub-cred.yaml
+regcred-github.yaml

@@ -18,9 +18,20 @@ config:
           passwordKey: password
       default: true
 
+ 
   git:
     commitUser: "ArgoCD Image Updater"
     commitEmail: "m.lamineboye@gmail.com"
+    credentials:
+      - url: https://github.com/lezboyer/fullappchart
+        usernameSecret:
+          name: regcred-github
+          key: username
+        passwordSecret:
+          name: regcred-github
+          key: password
+
+
 
   resources:
     limits:
