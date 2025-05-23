@@ -1,0 +1,57 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: greeting-environments
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          - name: dev
+            namespace: dev
+            branch: dev
+          - name: prod
+            namespace: prod
+            branch: main
+  template:
+    metadata:
+      name: '{{name}}-greeting'
+      annotations:
+        argocd-image-updater.argoproj.io/image-list: |
+          frontend=docker.io/lamineboye/frontend,
+          backend=docker.io/lamineboye/backend
+        argocd-image-updater.argoproj.io/write-back-method: git
+        argocd-image-updater.argoproj.io/git-branch: '{{branch}}'
+        argocd-image-updater.argoproj.io/update-strategy: latest
+        argocd-image-updater.argoproj.io/frontend.helm.value-files: values/values-dev.yaml
+        argocd-image-updater.argoproj.io/frontend.helm.values: frontend.workload.tag
+        argocd-image-updater.argoproj.io/backend.helm.values: backend.workload.tag
+
+        argocd-image-updater.argoproj.io/source-type: helm
+    spec:
+      ignoreDifferences:
+        - group: ""
+          kind: ConfigMap
+          name: greeting-frontend
+          namespace: '{{name}}'
+          jsonPointers:
+            - /data
+      project: default
+      source:
+        repoURL: https://github.com/lezboyer/fullappchart.git
+        targetRevision: '{{branch}}'
+        path: .
+        helm:
+          releaseName: greeting
+          valueFiles:
+            - values/values-{{name}}.yaml
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{namespace}}'
+      syncPolicy:
+        automated:
+          selfHeal: true
+          prune: true
+
+
+      
