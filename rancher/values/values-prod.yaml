@@ -5,6 +5,8 @@ replicas: 1
 bootstrapPassword: admin
 
 ingress:
+  extraAnnotations:
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
   ingressClassName: "nginx"
   annotations:
     kubernetes.io/ingress.class: "nginx"
