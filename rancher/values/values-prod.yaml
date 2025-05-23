@@ -1,5 +1,12 @@
-hostname: rancher.localhost 
-ingress.ingressClassName: "nginx"
-replicas: 1 
+hostname: rancher.localhost
+
+replicas: 1
+
 bootstrapPassword: admin
-ingress.tls.source: rancher
+
+ingress:
+  ingressClassName: "nginx"
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+  tls:
+    source: rancher
