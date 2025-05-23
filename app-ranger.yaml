@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: rancher
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/lezboyer/infra-deployments.git'
+    targetRevision: main
+    path: rancher
+    helm:
+      releaseName: rancher
+      valueFiles:
+        - values/values-prod.yaml
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: cattle-system
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true

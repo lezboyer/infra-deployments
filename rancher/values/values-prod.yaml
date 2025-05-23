@@ -1,0 +1,5 @@
+hostname: rancher.localhost 
+ingress.ingressClassName: nginx 
+replicas: 1 
+bootstrapPassword: admin
+ingress.tls.source: rancher
