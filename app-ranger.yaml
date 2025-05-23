@@ -17,5 +17,8 @@ spec:
     server: 'https://kubernetes.default.svc'
     namespace: cattle-system
   syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
     syncOptions:
       - CreateNamespace=true
