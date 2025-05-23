@@ -5,11 +5,16 @@ replicas: 1
 bootstrapPassword: admin
 
 ingress:
-  extraAnnotations:
-    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-    nginx.ingress.kubernetes.io/service-upstream: "true"
-  ingressClassName: "nginx"
+  ingressClassName: nginx
   annotations:
     kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    nginx.ingress.kubernetes.io/service-upstream: "true"
   tls:
     source: rancher
+
+ports:
+  https-internal:
+    port: 443
+    targetPort: 444
+
