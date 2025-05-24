@@ -16,5 +16,5 @@ ingress:
 ports:
   https-internal:
     port: 443
-    targetPort: 444
+    targetPort: 443
 
