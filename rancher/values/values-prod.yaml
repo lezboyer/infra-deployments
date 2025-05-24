@@ -13,8 +13,5 @@ ingress:
   tls:
     source: rancher
 
-ports:
-  https-internal:
-    port: 443
-    targetPort: 443
+
 
