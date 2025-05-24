@@ -4,6 +4,8 @@ replicas: 1
 
 bootstrapPassword: admin
 
+hostPort: 443  # 👈 essentiel pour activer containerPort: 444
+
 ingress:
   ingressClassName: nginx
   annotations:
@@ -13,5 +15,7 @@ ingress:
   tls:
     source: rancher
 
-
-
+ports:
+  https-internal:
+    port: 443
+    targetPort: 444

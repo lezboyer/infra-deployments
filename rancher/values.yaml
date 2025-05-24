@@ -70,7 +70,7 @@ ingress:
   path: "/"
   # Backend port number; should use either: 80, or 443.
   # Must use 443 when `service.disableHTTP` is set to true.
-  servicePort: 443
+  servicePort: 80
 
   # configurationSnippet - Add additional Nginx configuration. This example statically sets a header on the ingress.
   # configurationSnippet: |
@@ -88,7 +88,7 @@ service:
   annotations: {}
   # An optional security setting to disables the HTTP port of the rancher service
   # When set true, you must also set `ingress.servicePort` to 443 and the appropriate ingress annotation to use HTTPS
-  disableHTTP: true
+  disableHTTP: false
 
 ### LetsEncrypt config ###
 # ProTip: The production environment only allows you to register a name 5 times a week.
@@ -167,7 +167,7 @@ postDelete:
   enabled: true
   image:
     repository: rancher/shell
-    tag: v0.4.0
+    tag: v0.4.1
   namespaceList:
     - cattle-fleet-system
     - cattle-system
