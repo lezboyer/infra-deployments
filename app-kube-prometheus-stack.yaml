@@ -11,6 +11,7 @@ spec:
     path: kube-prometheus-stack
     helm:
       releaseName: kube-monitor
+      skipCrds: true 
       valueFiles:
         - promotheus/values/values-base.yaml
         - promotheus/values/values-prod.yaml

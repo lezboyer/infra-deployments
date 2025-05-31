@@ -3,3 +3,8 @@ grafana:
   adminUser: "lamine"
   adminPassword: "devpassword"
   defaultDashboardsEnabled: true
+
+  persistence:
+    enabled: true
+    storageClassName: standard
+    size: 2Gi
