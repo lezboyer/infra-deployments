@@ -1,7 +1,0 @@
-grafana:
-  enabled: true
-  adminUser: "lamine"
-  adminPassword: "devpassword"
-  defaultDashboardsEnabled: true
-
-

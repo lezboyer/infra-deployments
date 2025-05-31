@@ -1,5 +1,0 @@
-
-prometheus:
-  prometheusSpec:
-    retention: 7d
-    replicas: 1

@@ -13,10 +13,7 @@ spec:
       releaseName: kube-monitor
       skipCrds: true 
       valueFiles:
-        - values/prometheus/values-base.yaml
-        - values/prometheus/values-prod.yaml
-        - values/alertmanager/values-base.yaml
-        - values/grafana/values-base.yaml
+        - values/values-prod.yaml
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: monitoring
