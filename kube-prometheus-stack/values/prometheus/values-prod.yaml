@@ -9,11 +9,3 @@ prometheus:
       timeoutSeconds: 10
       periodSeconds: 10
 
-    storageSpec:
-      volumeClaimTemplate:
-        spec:
-          storageClassName: standard
-          accessModes: ["ReadWriteOnce"]
-          resources:
-            requests:
-              storage: 2Gi
